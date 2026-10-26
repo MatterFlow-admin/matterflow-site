@@ -45,28 +45,27 @@
 
 <!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
 <section class="hero" id="top">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">On-site waste automation for venues</p>
-      <h1>Sort for a better tomorrow.</h1>
-      <p class="descriptor"><span>Sort.</span> <span>Audit.</span> <span>Flow.</span></p>
-      <div class="actions">
-        <a class="btn" href="#how">How it works</a>
-        <a class="btn btn-ghost" href="#mission">Our mission</a>
-      </div>
+  <!-- Full-bleed field photo. The media box keeps the photo's 3:2 ratio while covering the
+       hero, so the detection boxes (percentages of the photo) stay on their items.
+       Every tag is true to the photo: cans are ID: YES, the popcorn box is ID: NO. -->
+  <div class="hero-frame" aria-hidden="true"><div class="hero-media">
+    <img src="assets/hero-sort-line-2400.jpg" srcset="assets/hero-sort-line-1200.jpg 1200w, assets/hero-sort-line-2400.jpg 2400w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" width="2400" height="1600" fetchpriority="high" decoding="async" alt="">
+    <span class="scanline"></span>
+    <span class="bbox yes" style="--x:37.2%;--y:43.2%;--w:5.4%;--h:8.8%;--d:.8s"><span class="chip yes">ID: YES <i>0.97</i></span></span>
+    <span class="bbox no" style="--x:55%;--y:54.3%;--w:6.2%;--h:9.2%;--d:1.1s"><span class="chip no">ID: NO <i>0.96</i></span></span>
+    <span class="bbox yes" style="--x:63.3%;--y:51.3%;--w:3.3%;--h:3.9%;--d:1.4s"><span class="chip yes">ID: YES <i>0.93</i></span></span>
+    <span class="bbox yes minor" style="--x:71.4%;--y:57.3%;--w:3.8%;--h:3.9%;--d:1.7s"><span class="chip yes">ID: YES <i>0.91</i></span></span>
+  </div></div>
+  <div class="hero-copy">
+    <p class="eyebrow">On-site waste automation for venues</p>
+    <h1>Sort for a better tomorrow.</h1>
+    <p class="descriptor"><span>Sort.</span> <span>Audit.</span> <span>Flow.</span></p>
+    <div class="actions">
+      <a class="btn" href="#how">How it works</a>
+      <a class="btn btn-ghost" href="#mission">Our mission</a>
     </div>
-    <!-- Detection boxes sit on real items in the render, as percentages of the
-         1200 x 1200 canvas in assets/mechanism-cutaway.webp. -->
-    <figure class="hero-art">
-      <img src="assets/mechanism-cutaway.webp" width="1200" height="1200" fetchpriority="high" decoding="async" alt="Cutaway render of the MatterFlow unit. Mixed items slide down the Gravity Chute. Aluminum cans are tagged ID: YES and other items ID: NO as the Vision Head classifies them.">
-      <span class="scanline" aria-hidden="true"></span>
-      <span class="bbox yes" style="--x:30.4%;--y:33.2%;--w:3.4%;--h:4.6%;--d:.9s" aria-hidden="true"><span class="chip yes">ID: YES <i>0.97</i></span></span>
-      <span class="bbox no" style="--x:51%;--y:33%;--w:5.6%;--h:4.4%;--d:1.2s" aria-hidden="true"><span class="chip no">ID: NO <i>0.94</i></span></span>
-      <span class="bbox minor yes" style="--x:47.2%;--y:37%;--w:3.4%;--h:4.6%;--d:1.5s" aria-hidden="true"><span class="chip yes">ID: YES <i>0.91</i></span></span>
-      <span class="bbox minor no" style="--x:33.2%;--y:41.6%;--w:5.6%;--h:4.4%;--d:1.8s" aria-hidden="true"><span class="chip no">ID: NO <i>0.88</i></span></span>
-      <span class="bbox yes" style="--x:64.8%;--y:39.2%;--w:3.4%;--h:4.6%;--d:2.1s" aria-hidden="true"><span class="chip yes">ID: YES <i>0.96</i></span></span>
-    </figure>
   </div>
+  <p class="hero-cap mono">The sort line, LA Memorial Coliseum</p>
 </section>
 
 <!-- ═══ 01 MISSION ═════════════════════════════════════════════════════ -->

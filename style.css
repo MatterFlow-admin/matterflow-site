@@ -117,32 +117,34 @@ strong{font-weight:600;color:#fff}
 .chip.yes{background:var(--detect);color:#04160F}
 .chip.no{background:var(--reject);color:var(--navy)}
 
-/* ── hero ─────────────────────────────────────────────────────────────── */
-.hero{position:relative;overflow:hidden;
-  padding:clamp(40px,6vw,72px) var(--gut) clamp(48px,6vw,88px);
-  min-height:min(calc(100svh - var(--head)),920px);display:grid;align-items:center}
-.hero::before{ /* scan lattice: 2.8% white at 34px pitch */
-  content:"";position:absolute;inset:0;pointer-events:none;
+/* ── hero: full-bleed field photo, bottom-weighted navy scrim, type lower-left ── */
+.hero{position:relative;overflow:hidden;isolation:isolate;
+  height:min(calc(100svh - var(--head)),960px);min-height:560px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 var(--gut) clamp(40px,6vw,80px)}
+.hero-frame{position:absolute;inset:0;z-index:-2;overflow:hidden;container-type:size}
+.hero-media{position:absolute;left:50%;top:50%;
+  width:max(100cqw,150cqh);height:max(100cqh,66.667cqw);transform:translate(-50%,-50%)}
+.hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(.96)}
+/* Portrait screens crop to the middle third: bias it toward the sorter and the can in hand. */
+@media (max-aspect-ratio:1/1){ .hero-media{transform:translate(-48.5%,-50%)} }
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:
-    repeating-linear-gradient(90deg,rgba(255,255,255,.028) 0 1px,transparent 1px 34px),
-    repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 34px);
-}
-.hero-grid{position:relative;max-width:var(--max);margin-inline:auto;width:100%;
-  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;
-  gap:clamp(8px,2vw,32px)}
-.hero h1{margin-bottom:1.3rem}
+    linear-gradient(to top,var(--scrim) 0%,var(--scrim) 30%,rgba(10,29,55,.35) 62%,rgba(10,29,55,.15) 100%),
+    linear-gradient(to right,rgba(10,29,55,.55) 0%,rgba(10,29,55,0) 60%)}
+.hero-copy{position:relative;max-width:var(--max);margin-inline:auto;width:100%}
+.hero h1{max-width:12ch;margin-bottom:1.2rem}
 .descriptor{display:flex;flex-wrap:wrap;gap:.2em .7em;max-width:none;
   font-family:var(--mono);font-weight:500;font-size:clamp(.92rem,1.5vw,1.15rem);
   letter-spacing:.2em;text-transform:uppercase;color:var(--mint);margin:0}
-.hero-art{position:relative;margin:0 calc(var(--gut) * -1) 0 0;aspect-ratio:1}
-.hero-art img{width:100%;height:100%;object-fit:contain}
-.scanline{position:absolute;top:8%;bottom:8%;left:0;width:2px;background:var(--mint);opacity:0;
-  animation:sweep 1.6s var(--ease) .3s forwards}
-@keyframes sweep{0%{left:12%;opacity:0}10%{opacity:.7}90%{opacity:.7}100%{left:88%;opacity:0}}
+.hero-cap{position:absolute;right:var(--gut);bottom:clamp(16px,2vw,24px);color:var(--body);font-size:.6rem}
+.scanline{position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--mint);opacity:0;
+  animation:sweep 1.8s var(--ease) .3s forwards}
+@keyframes sweep{0%{left:0;opacity:0}8%{opacity:.6}92%{opacity:.6}100%{left:100%;opacity:0}}
 .bbox{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);
   border:1.5px solid var(--detect);opacity:0;animation:lock .45s ease-out var(--d) forwards}
 .bbox.no{border-color:var(--reject)}
-.bbox .chip{position:absolute;bottom:100%;left:-1.5px;font-size:.56rem;padding:2px 5px}
+.bbox .chip{position:absolute;bottom:100%;left:-1.5px;font-size:.58rem;padding:2px 5px}
 @keyframes lock{from{opacity:0;transform:scale(1.25)}to{opacity:1;transform:scale(1)}}
 
 /* ── bands ────────────────────────────────────────────────────────────── */
@@ -419,9 +421,6 @@ strong{font-weight:600;color:#fff}
   .tabs-row .tab-stage{margin-top:0;aspect-ratio:4/3;position:sticky;top:calc(var(--head) + 16px)}
 }
 @media (max-width:860px){
-  .hero{min-height:auto}
-  .hero-grid{grid-template-columns:1fr;gap:8px}
-  .hero-art{margin:0 auto;width:min(100%,560px)}
   .split,.mech{grid-template-columns:1fr}
   .mech-fig{position:relative;top:auto}
   .specs{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -451,6 +450,7 @@ strong{font-weight:600;color:#fff}
   .site-nav > .btn-sm{display:none}
   .nav-links .nav-contact{display:inline-flex;color:var(--mint)}
   .hero h1{font-size:clamp(2.4rem,11.5vw,3.2rem)}
+  .hero-cap{display:none}
   .eco{grid-template-columns:1fr}
   .eco li,.eco li + li{padding:0 0 18px;border-left:0;margin-top:0;border-bottom:1px solid var(--line)}
   .eco li + li{padding-top:18px}
