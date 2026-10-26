@@ -1,0 +1,7 @@
+# Internal source material. This repo is public and GitHub Pages serves every
+# committed file, so the narrative guide and briefs stay local only.
+docs/context/
+.DS_Store
+
+# Local Claude Code setup (agents, project notes). Kept out of the public repo.
+.claude/

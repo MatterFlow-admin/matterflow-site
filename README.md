@@ -102,9 +102,17 @@ Click any file in GitHub, hit the pencil, edit, commit. The site rebuilds in abo
 
 ## What's on the page
 
-Hero · Built for the back of house · Space / Time / Labor with the footprint diagram and the
-one-day claim · Pilot partnership · One stream in, two streams out · Founding team · Careers ·
-Contact.
+Hero · 01 Mission · 02 The problem · 03 How it works (cutaway render, five steps, spec strip) ·
+04 Waste auditing (illustrative dashboard, use cases, data commitments) · 05 What changes
+(Space / Time / Labor, the one-day target, footprint) · 06 Pilot · 07 Where we're going ·
+08 Team · 09 Careers · 10 Contact.
+
+**The How it works image** is the cutaway render from the Figma file "MatterFlow System Design"
+(node 3:155), saved as `assets/mechanism-cutaway.png`. If the render changes, re-export it and
+nudge the numbered pins (`--x` / `--y` on each `.pin` in `index.html`) to match.
+
+**The dashboard numbers are sample data**, tagged on the page as illustrative. Replace them with
+pilot results once they exist.
 
 ## Notes
 
