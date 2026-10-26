@@ -85,9 +85,16 @@ strong{font-weight:600;color:#fff}
 .mark-sm{width:32px;height:32px;margin-bottom:14px}
 .wordmark{font-weight:700;font-size:1.18rem;letter-spacing:-.035em}
 .site-nav{display:flex;align-items:center;gap:clamp(14px,2vw,28px)}
-.site-nav a:not(.btn){display:inline-flex;align-items:center;min-height:26px;
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2vw,28px)}
+.nav-links a{display:inline-flex;align-items:center;min-height:26px;
   text-decoration:none;font-size:.88rem;color:var(--body)}
-.site-nav a:not(.btn):hover{color:#fff}
+.nav-links a:hover{color:#fff}
+.menu-btn{display:none;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;background:transparent;border:1px solid var(--line-strong);
+  padding:10px 14px;min-height:40px;cursor:pointer}
+.menu-btn:hover{border-color:#fff}
+.site-head.open .menu-btn{border-color:var(--mint);color:var(--mint)}
+.nav-links .nav-contact{display:none}
 
 /* ── buttons ──────────────────────────────────────────────────────────── */
 .btn{
@@ -294,7 +301,7 @@ strong{font-weight:600;color:#fff}
 .flow{margin:clamp(40px,5vw,60px) 0 0;padding:clamp(14px,2.4vw,30px);
   border:1px solid var(--line-mint);overflow-x:auto}
 .flow img{width:100%;min-width:520px}
-.footprint img{max-width:720px;margin-inline:auto}
+.footprint img{max-width:620px;min-width:0;margin-inline:auto}
 .flow:focus-visible{outline:2px solid var(--mint);outline-offset:4px}
 
 /* ── 07 vision ────────────────────────────────────────────────────────── */
@@ -342,7 +349,12 @@ strong{font-weight:600;color:#fff}
 
 /* ── responsive ───────────────────────────────────────────────────────── */
 @media (max-width:1080px){
-  .site-nav a:not(.btn){display:none}
+  .menu-btn{display:inline-block}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;
+    gap:0;padding:8px var(--gut) 16px;background:var(--navy);border-bottom:1px solid var(--line)}
+  .site-head.open .nav-links{display:flex}
+  .nav-links a{font-size:1rem;padding:14px 0;min-height:48px;border-bottom:1px solid var(--line)}
+  .nav-links a:last-child{border-bottom:0}
   .logic{grid-template-columns:1fr}
   .logic li,.logic li + li{display:grid;grid-template-columns:44px 1fr;padding:16px 16px 16px 0;
     border-left:0;border-bottom:1px solid var(--line)}
@@ -374,6 +386,8 @@ strong{font-weight:600;color:#fff}
   .shot-pair,.careers-grid{grid-template-columns:1fr}
 }
 @media (max-width:520px){
+  .site-nav > .btn-sm{display:none}
+  .nav-links .nav-contact{display:inline-flex;color:var(--mint)}
   .detect{display:none}
   .hero{min-height:auto}
   .cards,.eco{grid-template-columns:1fr}
