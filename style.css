@@ -198,6 +198,20 @@ html:not(.js) .tab-panel:not(.is-active){display:none}
 .tab-panel img.contain{object-fit:contain;padding:4%;filter:none}
 .tab-panel figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;
   color:var(--mint);background:linear-gradient(to top,var(--scrim),rgba(10,29,55,0))}
+/* Vision Head view (problem tab 04): the whole frame always fits, so no tagged item is cropped. */
+.vf{background:var(--navy)}
+.vf-frame{position:absolute;inset:0 0 40px;container-type:size}
+.vf-media{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);--ar:2.326;
+  width:min(100cqw,calc(100cqh * var(--ar)));height:min(100cqh,calc(100cqw / var(--ar)))}
+.vf-media img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.85)}
+.vf .bbox{-webkit-backdrop-filter:brightness(1.6);backdrop-filter:brightness(1.6)}
+.js .vf .bbox{animation:none;opacity:0}
+.js .vf.is-active .bbox{animation:lock .4s ease-out var(--d) forwards}
+.bbox.below .chip{bottom:auto;top:100%}
+.tab-panel .vf-bar{position:absolute;left:0;right:0;bottom:0;height:40px;padding:0 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);
+  border-top:1px solid var(--line);color:var(--muted);font-size:.6rem}
+.vf-bar span:last-child{color:var(--mint)}
 .ph{position:absolute;inset:clamp(10px,1.6vw,18px);border:1px dashed var(--line-mint);
   display:flex;flex-direction:column;justify-content:center;padding:8%;gap:12px}
 .ph-tag{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.2em;
@@ -468,6 +482,7 @@ html:not(.js) .tab-panel:not(.is-active){display:none}
   .pin{width:22px;height:22px;font-size:.66rem;box-shadow:0 0 0 3px rgba(10,29,55,.85)}
   .bbox .chip{font-size:.5rem;padding:1px 4px}
   .bbox .chip i{display:none} /* MF-BRD-001: omit confidence at small display sizes */
+  .tab-panel .vf-bar{font-size:.52rem;letter-spacing:.12em;white-space:nowrap;padding:0 12px}
   .bbox.minor{display:none} /* fewer boxes so the chips don't collide on phones */
   .commit li{flex-basis:100%;padding-block:12px}
   .commit li + li{border-top:1px solid var(--line)}
@@ -479,7 +494,7 @@ html:not(.js) .tab-panel:not(.is-active){display:none}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .scanline{display:none}
-  .bbox{opacity:1;animation:none}
+  .bbox,.js .vf .bbox{opacity:1;animation:none}
   *,*::before,*::after{transition:none!important}
 }
 @media (prefers-contrast:more){
