@@ -102,14 +102,24 @@ Click any file in GitHub, hit the pencil, edit, commit. The site rebuilds in abo
 
 ## What's on the page
 
-Hero · 01 Mission · 02 The problem · 03 How it works (cutaway render, five steps, spec strip) ·
-04 Waste auditing (illustrative dashboard, use cases, data commitments) · 05 What changes
-(Space / Time / Labor, the one-day target, footprint) · 06 Pilot · 07 Where we're going ·
-08 Team · 09 Careers · 10 Contact.
+Hero (sort-line photo with live-style ID boxes) · 01 Mission · 02 The problem (five tabs with
+images) · 03 How it works (Full build / Cutaway toggle, five steps, spec strip) · 04 Waste
+auditing (illustrative dashboard, "Where the record goes." tabs, data commitments) · 05 What
+changes · 06 Pilot · 07 Where we're going · 08 Team · 09 Careers · 10 Contact.
 
-**The How it works image** is the cutaway render from the Figma file "MatterFlow System Design"
-(node 3:155), saved as `assets/mechanism-cutaway.png`. If the render changes, re-export it and
-nudge the numbered pins (`--x` / `--y` on each `.pin` in `index.html`) to match.
+Works on phones, iPads, and desktop: every tab and toggle responds to tap and keyboard as well
+as mouse.
+
+**Hero detection boxes** are positioned as percentages of `assets/hero-sort-line-*.jpg`. If the
+photo is swapped, move each `.bbox` (`--x`, `--y`, `--w`, `--h` in `index.html`) onto real items,
+and only tag aluminum as ID: YES.
+
+**Renders** in How it works come from the Figma file "MatterFlow System Design" (node 2:5 full
+build, node 3:155 cutaway), exported as `assets/mechanism-*.webp` on one 1200 x 1200 canvas. The
+numbered pins are percentages of that canvas.
+
+**Image placeholders** in the problem tabs (01, 03, 05) and the use-case tabs (A to D) say what
+photo belongs there. Replace the `.ph` block with an `<img>` when it arrives.
 
 **The dashboard numbers are sample data**, tagged on the page as illustrative. Replace them with
 pilot results once they exist.
