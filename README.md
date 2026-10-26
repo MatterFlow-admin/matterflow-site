@@ -102,7 +102,7 @@ Click any file in GitHub, hit the pencil, edit, commit. The site rebuilds in abo
 
 ## What's on the page
 
-Hero (sort-line photo with live-style ID boxes) · 01 Mission · 02 The problem (five tabs with
+Hero (sort-line photo with live-style ID boxes) · 01 Mission · 02 The problem (four tabs with
 images) · 03 How it works (Full build / Cutaway toggle, five steps, spec strip) · 04 Waste
 auditing (illustrative dashboard, "Where the record goes." tabs, data commitments) · 05 What
 changes · 06 Pilot · 07 Where we're going · 08 Team · 09 Careers · 10 Contact.
@@ -118,8 +118,12 @@ and only tag aluminum as ID: YES.
 build, node 3:155 cutaway), exported as `assets/mechanism-*.webp` on one 1200 x 1200 canvas. The
 numbered pins are percentages of that canvas.
 
-**Image placeholders** in the problem tabs (01, 03, 05) and the use-case tabs (A to D) say what
-photo belongs there. Replace the `.ph` block with an `<img>` when it arrives.
+**Image placeholders** in the use-case tabs (A to D) say what photo belongs there. Replace the
+`.ph` block with an `<img>` when it arrives.
+
+**Photo credits:** the game-day photo in problem tab 01 is by John McGillen / USC Athletics and is
+credited in its caption and alt text. Credit any outside photo the same way (a `.credit` span
+inside the `figcaption`).
 
 **The dashboard numbers are sample data**, tagged on the page as illustrative. Replace them with
 pilot results once they exist.
