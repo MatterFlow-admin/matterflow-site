@@ -196,21 +196,23 @@ strong{font-weight:600;color:#fff}
 html:not(.js) .tab-panel:not(.is-active){display:none}
 .tab-panel img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
 .tab-panel img.contain{object-fit:contain;padding:4%;filter:none}
-.tab-panel figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;
-  color:var(--mint);background:linear-gradient(to top,var(--scrim),rgba(10,29,55,0))}
+.tab-panel figcaption{position:absolute;left:0;right:0;bottom:0;padding:56px 18px 14px;
+  color:var(--mint);background:linear-gradient(to top,rgba(10,29,55,.9) 0%,var(--scrim) 40%,rgba(10,29,55,0) 100%)}
 /* Vision Head view (problem tab 04): the whole frame always fits, so no tagged item is cropped. */
 .vf{background:var(--navy)}
-.vf-frame{position:absolute;inset:0 0 40px;container-type:size}
-.vf-media{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);--ar:2.326;
-  width:min(100cqw,calc(100cqh * var(--ar)));height:min(100cqh,calc(100cqw / var(--ar)))}
+.vf-frame{position:absolute;inset:0;container-type:size;overflow:hidden}
+/* Full bleed: the crop is taller than any stage shape, so it always spans the full width
+   and only trims top and bottom, where there are no tagged items. */
+.vf-media{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);--ar:1.3636;
+  width:max(100cqw,calc(100cqh * var(--ar)));height:max(100cqh,calc(100cqw / var(--ar)))}
 .vf-media img{width:100%;height:100%;object-fit:cover;filter:brightness(.62) saturate(.85)}
 .vf .bbox{-webkit-backdrop-filter:brightness(1.6);backdrop-filter:brightness(1.6)}
 .js .vf .bbox{animation:none;opacity:0}
 .js .vf.is-active .bbox{animation:lock .4s ease-out var(--d) forwards}
 .bbox.below .chip{bottom:auto;top:100%}
-.tab-panel .vf-bar{position:absolute;left:0;right:0;bottom:0;height:40px;padding:0 16px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);
-  border-top:1px solid var(--line);color:var(--muted);font-size:.6rem}
+.tab-panel .vf-bar{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 12px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:linear-gradient(to top,var(--scrim),rgba(10,29,55,0));color:var(--body);font-size:.6rem}
 .vf-bar span:last-child{color:var(--mint)}
 .ph{position:absolute;inset:clamp(10px,1.6vw,18px);border:1px dashed var(--line-mint);
   display:flex;flex-direction:column;justify-content:center;padding:8%;gap:12px}
