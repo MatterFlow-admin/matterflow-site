@@ -50,6 +50,10 @@
        Every tag is true to the photo: cans are ID: YES, the popcorn box is ID: NO. -->
   <div class="hero-frame" aria-hidden="true"><div class="hero-media">
     <img src="assets/hero-sort-line-2400.jpg" srcset="assets/hero-sort-line-1200.jpg 1200w, assets/hero-sort-line-2400.jpg 2400w" sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" width="2400" height="1600" fetchpriority="high" decoding="async" alt="">
+  </div></div>
+  <!-- Vision layer sits above the scrim at full strength; each box shows the photo
+       un-dimmed, the way the camera "sees" the item it has locked onto. -->
+  <div class="hero-frame hero-vision" aria-hidden="true"><div class="hero-media">
     <span class="scanline"></span>
     <span class="bbox yes" style="--x:37.2%;--y:43.2%;--w:5.4%;--h:8.8%;--d:.8s"><span class="chip yes">ID: YES <i>0.97</i></span></span>
     <span class="bbox no" style="--x:55%;--y:54.3%;--w:6.2%;--h:9.2%;--d:1.1s"><span class="chip no">ID: NO <i>0.96</i></span></span>
@@ -103,7 +107,7 @@
     <div class="tabs tabs-row" data-tabs>
       <div class="tab-list" role="tablist" aria-label="Why venue waste goes to landfill">
         <button class="tab" type="button" role="tab" id="pt-1" aria-controls="pp-1" aria-selected="true"><span class="tab-n">01</span><span class="tab-t">Every live event produces a large, predictable volume of mixed waste in a short window.</span></button>
-        <button class="tab" type="button" role="tab" id="pt-2" aria-controls="pp-2" aria-selected="false" tabindex="-1"><span class="tab-n">02</span><span class="tab-t">Recovering material takes labor, time, and space, which venues have least of after an event.</span></button>
+        <button class="tab" type="button" role="tab" id="pt-2" aria-controls="pp-2" aria-selected="false" tabindex="-1"><span class="tab-n">02</span><span class="tab-t">Recovering material takes labor, time, and space, which venues have least of during and after an event.</span></button>
         <button class="tab" type="button" role="tab" id="pt-3" aria-controls="pp-3" aria-selected="false" tabindex="-1"><span class="tab-n">03</span><span class="tab-t">When sorting costs more than the team has in that moment, mixed waste goes to landfill. That is a rational decision, not a lack of care.</span></button>
         <button class="tab" type="button" role="tab" id="pt-4" aria-controls="pp-4" aria-selected="false" tabindex="-1"><span class="tab-n">04</span><span class="tab-t">MatterFlow lowers that cost by automating the first and most repetitive pick, aluminum, and adds value by auditing everything that passes through.</span></button>
         <button class="tab" type="button" role="tab" id="pt-5" aria-controls="pp-5" aria-selected="false" tabindex="-1"><span class="tab-n">05</span><span class="tab-t">Once value exceeds cost, recovery becomes the logical choice.</span></button>
@@ -158,7 +162,7 @@
           <span class="pin" style="--x:83%;--y:21%;--i:4" aria-hidden="true">5</span>
         </div>
         <div class="mech-bar">
-          <figcaption class="mono" data-caption>Full build</figcaption>
+          <figcaption class="mono" data-caption>Cutaway shows the steps</figcaption>
           <div class="seg" role="group" aria-label="View">
             <button type="button" data-set="build" aria-pressed="true">Full build</button>
             <button type="button" data-set="cut" aria-pressed="false">Cutaway</button>
@@ -209,11 +213,11 @@
       <p class="dash-note">Real figures come from the Oct to Nov 2027 pilot.</p>
       <!-- Values are the final figures; JS counts up to them once on first view. -->
       <div class="kpis">
-        <div class="kpi kpi-hero"><p class="kpi-l">Diversion rate (whole event)</p><p class="kpi-v"><span class="count" data-to="38.0" data-dec="1">38.0</span><small>%</small></p></div>
-        <div class="kpi"><p class="kpi-l">Labor hours returned</p><p class="kpi-v"><span class="count" data-to="42">42</span><small>h</small></p></div>
-        <div class="kpi"><p class="kpi-l">Sorting time saved</p><p class="kpi-v"><span class="count" data-to="9.5" data-dec="1">9.5</span><small>h</small></p></div>
-        <div class="kpi"><p class="kpi-l">Items logged</p><p class="kpi-v"><span class="count" data-to="61240">61,240</span></p><p class="kpi-s">1 audit report</p></div>
-        <div class="kpi"><p class="kpi-l">Energy used</p><p class="kpi-v"><span class="count" data-to="18">18</span><small>kWh</small></p></div>
+        <div class="kpi kpi-hero"><p class="kpi-l">Diversion rate (whole event)</p><p class="kpi-v"><span class="count" data-to="38.0" data-dec="1" aria-hidden="true">38.0</span><span class="sr-only">38.0</span><small>%</small></p></div>
+        <div class="kpi"><p class="kpi-l">Labor hours returned</p><p class="kpi-v"><span class="count" data-to="42" aria-hidden="true">42</span><span class="sr-only">42</span><small>h</small></p></div>
+        <div class="kpi"><p class="kpi-l">Sorting time saved</p><p class="kpi-v"><span class="count" data-to="9.5" data-dec="1" aria-hidden="true">9.5</span><span class="sr-only">9.5</span><small>h</small></p></div>
+        <div class="kpi"><p class="kpi-l">Items logged</p><p class="kpi-v"><span class="count" data-to="61240" aria-hidden="true">61,240</span><span class="sr-only">61,240</span></p><p class="kpi-s">1 audit report</p></div>
+        <div class="kpi"><p class="kpi-l">Energy used</p><p class="kpi-v"><span class="count" data-to="18" aria-hidden="true">18</span><span class="sr-only">18</span><small>kWh</small></p></div>
       </div>
       <div class="dash-body">
         <div class="dash-panel">
@@ -244,8 +248,15 @@
       </div>
     </figure>
 
-    <h3 class="sub">What venues use it for</h3>
+    <p class="sub">What venues use it for</p>
+    <h3 class="h-sec">Where the record goes.</h3>
     <div class="tabs tabs-col" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="What venues use the audit data for" aria-orientation="vertical">
+        <button class="tab" type="button" role="tab" id="ut-1" aria-controls="up-1" aria-selected="true"><span class="tab-n">A</span><span class="tab-body"><span class="tab-h">TRUE and LEED reporting</span><span class="tab-t">Item-level records to support certification reporting such as TRUE and LEED, gathered as the sort runs.</span></span></button>
+        <button class="tab" type="button" role="tab" id="ut-2" aria-controls="up-2" aria-selected="false" tabindex="-1"><span class="tab-n">B</span><span class="tab-body"><span class="tab-h">ESG and sustainability reports</span><span class="tab-t">Per-event diversion and energy figures in a form the venue can drop into its own reports.</span></span></button>
+        <button class="tab" type="button" role="tab" id="ut-3" aria-controls="up-3" aria-selected="false" tabindex="-1"><span class="tab-n">C</span><span class="tab-body"><span class="tab-h">Operations planning</span><span class="tab-t">What comes in, and when, to plan staffing, hauling, and bin placement for the next event.</span></span></button>
+        <button class="tab" type="button" role="tab" id="ut-4" aria-controls="up-4" aria-selected="false" tabindex="-1"><span class="tab-n">D</span><span class="tab-body"><span class="tab-h">Proof of impact</span><span class="tab-t">A defensible number as public scrutiny of venue waste grows.</span></span></button>
+      </div>
       <div class="tab-stage">
         <!-- TODO(team): images for A to D. Each placeholder says what to shoot. -->
         <figure class="tab-panel is-active" role="tabpanel" id="up-1" aria-labelledby="ut-1">
@@ -260,12 +271,6 @@
         <figure class="tab-panel" role="tabpanel" id="up-4" aria-labelledby="ut-4">
           <div class="ph"><p class="ph-tag">Image D · to come</p><p class="ph-desc">Public attention on venue waste: a city meeting or news coverage.</p></div>
         </figure>
-      </div>
-      <div class="tab-list" role="tablist" aria-label="What venues use the audit data for" aria-orientation="vertical">
-        <button class="tab" type="button" role="tab" id="ut-1" aria-controls="up-1" aria-selected="true"><span class="tab-n">A</span><span class="tab-body"><span class="tab-h">TRUE and LEED reporting</span><span class="tab-t">Item-level records for certification reporting, gathered as the sort runs instead of estimated afterward.</span></span></button>
-        <button class="tab" type="button" role="tab" id="ut-2" aria-controls="up-2" aria-selected="false" tabindex="-1"><span class="tab-n">B</span><span class="tab-body"><span class="tab-h">ESG and sustainability reports</span><span class="tab-t">Per-event diversion and energy figures in a form the venue can drop into its own reports.</span></span></button>
-        <button class="tab" type="button" role="tab" id="ut-3" aria-controls="up-3" aria-selected="false" tabindex="-1"><span class="tab-n">C</span><span class="tab-body"><span class="tab-h">Operations planning</span><span class="tab-t">What comes in, and when, to plan staffing, hauling, and bin placement for the next event.</span></span></button>
-        <button class="tab" type="button" role="tab" id="ut-4" aria-controls="up-4" aria-selected="false" tabindex="-1"><span class="tab-n">D</span><span class="tab-body"><span class="tab-h">Proof of impact</span><span class="tab-t">A defensible number as public scrutiny of venue waste grows.</span></span></button>
       </div>
     </div>
 
@@ -430,7 +435,7 @@
   <div class="wrap foot-grid">
     <div>
       <a class="lockup" href="#top" aria-label="MatterFlow, back to top"><svg class="mark" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><circle cx="16" cy="16" r="10.9" fill="#00E599"/><circle cx="48" cy="16" r="10.9" fill="#00E599"/><circle cx="80" cy="16" r="10.9" fill="#00E599"/><circle cx="16" cy="48" r="10.9" fill="#00E599"/><circle cx="48" cy="48" r="10.9" fill="#00E599"/><circle cx="80" cy="48" r="10.9" fill="#334155"/><circle cx="16" cy="80" r="10.9" fill="#00E599"/><circle cx="48" cy="80" r="10.9" fill="#334155"/><circle cx="80" cy="80" r="10.9" fill="#334155"/></svg><span class="wordmark">MatterFlow</span></a>
-      <p class="mono foot-tag">Sort for a better tomorrow</p>
+      <p class="mono foot-tag">Sort for a better tomorrow.</p>
     </div>
     <p class="mono dim">Sort. Audit. Flow.</p>
     <div class="foot-meta">
@@ -472,7 +477,9 @@
     }
     tabs.forEach(function(t, i){
       t.addEventListener('click', function(){ select(i); });
-      t.addEventListener('mouseenter', function(){ if (finePointer.matches) select(i); });
+      var hover;
+      t.addEventListener('mouseenter', function(){ if (finePointer.matches) hover = setTimeout(function(){ select(i); }, 120); });
+      t.addEventListener('mouseleave', function(){ clearTimeout(hover); });
       t.addEventListener('keydown', function(e){
         var k = e.key, n = tabs.length, next = null;
         if (k === 'ArrowRight' || k === 'ArrowDown') next = (i + 1) % n;
@@ -495,7 +502,7 @@
         root.querySelectorAll('[data-set]').forEach(function(b){ b.setAttribute('aria-pressed', b === btn); });
         imgs.build.setAttribute('aria-hidden', view !== 'build');
         imgs.cut.setAttribute('aria-hidden', view !== 'cut');
-        cap.textContent = view === 'cut' ? 'Cutaway, numbered steps' : 'Full build';
+        cap.textContent = view === 'cut' ? 'Steps 1 to 5 marked' : 'Cutaway shows the steps';
       });
     });
   });
@@ -505,12 +512,12 @@
   if (dash && 'IntersectionObserver' in window && !reduce) {
     dash.classList.add('is-waiting');
     var counts = dash.querySelectorAll('.count');
-    counts.forEach(function(el){ el.textContent = '0'; });
     var done = false;
     function fmt(el, f){
       var to = parseFloat(el.dataset.to), dec = +el.dataset.dec || 0;
       el.textContent = (to * f).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
     }
+    counts.forEach(function(el){ fmt(el, 0); });
     function finish(animate){
       if (done) return;
       done = true;

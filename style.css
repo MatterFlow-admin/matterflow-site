@@ -1,6 +1,6 @@
 /* ==========================================================================
-   MatterFlow — matterflow-usa.com
-   Design system per MatterFlow_Brand_Guidelines.pdf (MF—BRD—001) Rev 2.0 and
+   MatterFlow · matterflow-usa.com
+   Design system per MatterFlow_Brand_Guidelines.pdf (MF-BRD-001) Rev 2.0 and
    matterflow-theme.css ("Detection Grammar").
    Rule Zero: clear space, correct hex, Inter. Fully orthogonal: no border radius.
    Navy is the ground; Flow Mint is a signal, never a large fill. Detection Green
@@ -132,7 +132,8 @@ strong{font-weight:600;color:#fff}
   background:
     linear-gradient(to top,var(--scrim) 0%,var(--scrim) 30%,rgba(10,29,55,.35) 62%,rgba(10,29,55,.15) 100%),
     linear-gradient(to right,rgba(10,29,55,.55) 0%,rgba(10,29,55,0) 60%)}
-.hero-copy{position:relative;max-width:var(--max);margin-inline:auto;width:100%}
+.hero-vision{z-index:0;pointer-events:none}
+.hero-copy{position:relative;z-index:1;max-width:var(--max);margin-inline:auto;width:100%}
 .hero h1{max-width:12ch;margin-bottom:1.2rem}
 .descriptor{display:flex;flex-wrap:wrap;gap:.2em .7em;max-width:none;
   font-family:var(--mono);font-weight:500;font-size:clamp(.92rem,1.5vw,1.15rem);
@@ -142,9 +143,10 @@ strong{font-weight:600;color:#fff}
   animation:sweep 1.8s var(--ease) .3s forwards}
 @keyframes sweep{0%{left:0;opacity:0}8%{opacity:.6}92%{opacity:.6}100%{left:100%;opacity:0}}
 .bbox{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);
-  border:1.5px solid var(--detect);opacity:0;animation:lock .45s ease-out var(--d) forwards}
+  border:1.5px solid var(--detect);opacity:0;animation:lock .45s ease-out var(--d) forwards;
+  -webkit-backdrop-filter:brightness(2.3) contrast(1.05);backdrop-filter:brightness(2.3) contrast(1.05)}
 .bbox.no{border-color:var(--reject)}
-.bbox .chip{position:absolute;bottom:100%;left:-1.5px;font-size:.58rem;padding:2px 5px}
+.bbox .chip{position:absolute;bottom:100%;left:-1.5px;font-size:.64rem;padding:3px 6px}
 @keyframes lock{from{opacity:0;transform:scale(1.25)}to{opacity:1;transform:scale(1)}}
 
 /* ── bands ────────────────────────────────────────────────────────────── */
@@ -153,13 +155,14 @@ strong{font-weight:600;color:#fff}
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
   gap:clamp(24px,5vw,72px);align-items:start}
 .sub{font-family:var(--mono);font-size:.7rem;font-weight:400;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--muted);margin:clamp(56px,7vw,88px) 0 1.4rem}
+  text-transform:uppercase;color:var(--muted);margin:clamp(56px,7vw,88px) 0 .9rem;max-width:none}
+.h-sec{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;letter-spacing:-.03em;line-height:1;margin:0 0 clamp(22px,3vw,32px)}
 
 /* Photo band: full-bleed field image under the brand scrim, rgba(10,29,55,.75). */
 .band-photo{position:relative;isolation:isolate;border-top:0;
   padding-block:clamp(96px,14vw,180px)}
 .band-photo::before{content:"";position:absolute;inset:0;z-index:-2;
-  background:url(assets/coliseum-1.jpg) center 40%/cover no-repeat;filter:saturate(.8)}
+  background:url(assets/field-back-of-house-2000.jpg) center 55%/cover no-repeat;filter:saturate(.85)}
 .band-photo::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--scrim)}
 
 /* ── 01 mission ───────────────────────────────────────────────────────── */
@@ -187,9 +190,10 @@ strong{font-weight:600;color:#fff}
   .tab:hover .tab-n{color:var(--mint)}
 }
 .tab-stage{position:relative;overflow:hidden;background:var(--navy-800);border:1px solid var(--line-mint)}
-.tab-panel{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;
-  transition:opacity .25s var(--ease),visibility 0s linear .25s}
-.tab-panel.is-active{opacity:1;visibility:visible;transition:opacity .25s var(--ease)}
+.tab-panel{position:absolute;inset:0;margin:0}
+.js .tab-panel{opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility 0s linear .25s}
+.js .tab-panel.is-active{opacity:1;visibility:visible;transition:opacity .25s var(--ease)}
+html:not(.js) .tab-panel:not(.is-active){display:none}
 .tab-panel img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
 .tab-panel img.contain{object-fit:contain;padding:4%;filter:none}
 .tab-panel figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;
@@ -207,11 +211,13 @@ strong{font-weight:600;color:#fff}
 .tabs-row .tab + .tab{border-left:1px solid var(--line)}
 .tabs-row .tab-n{margin-bottom:12px}
 .tabs-row .tab[aria-selected="true"]::before{left:0;right:0;top:-1px;height:2px}
-.tabs-row .tab-stage{aspect-ratio:16/9;margin-top:24px}
+.tabs-row .tab-stage{aspect-ratio:21/9;max-height:min(60vh,520px);width:100%;margin-top:24px}
 
 /* Column tabs (use cases): large image, four stacked tabs beside it. */
 .tabs-col{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(16px,2vw,28px);
   margin-top:0;align-items:stretch}
+.tabs-col .tab-stage{grid-column:1;grid-row:1}
+.tabs-col .tab-list{grid-column:2;grid-row:1}
 .tabs-col .tab-stage{min-height:380px}
 .tabs-col .tab-list{display:grid;grid-template-rows:repeat(4,1fr);gap:clamp(10px,1.2vw,16px)}
 .tabs-col .tab{display:flex;gap:16px;padding:18px 18px 18px 20px;border:1px solid var(--line)}
@@ -241,8 +247,8 @@ strong{font-weight:600;color:#fff}
     repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 34px)}
 .mech-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
   transition:opacity .4s var(--ease),transform .5s var(--ease)}
-.mech-art .v-cut{opacity:0;transform:scale(.96)}
-.mech-art[data-view="cut"] .v-build{opacity:0;transform:scale(1.04)}
+.mech-art .v-cut{opacity:0;transform:scale(1.02)}
+.mech-art[data-view="cut"] .v-build{opacity:0;transform:scale(.98)}
 .mech-art[data-view="cut"] .v-cut{opacity:1;transform:none}
 /* Pins sit over the render by percentage, so they track it at any width. */
 .pin{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%) scale(.6);
@@ -329,7 +335,7 @@ strong{font-weight:600;color:#fff}
 .log tr:last-child td{border-bottom:0}
 .commit{list-style:none;padding:0;margin:clamp(32px,3.5vw,48px) 0 0;
   display:flex;flex-wrap:wrap;border-top:1px solid var(--line-mint);border-bottom:1px solid var(--line-mint)}
-.commit li{flex:1 1 180px;padding:16px 18px 16px 0;font-family:var(--mono);font-size:.68rem;
+.commit li{flex:1 1 0;min-width:150px;padding:16px 18px 16px 0;font-family:var(--mono);font-size:.68rem;
   letter-spacing:.14em;text-transform:uppercase;color:#DCE6F2;display:flex;gap:10px;align-items:baseline}
 .commit li::before{content:"";width:7px;height:7px;background:var(--mint);flex:none;transform:translateY(-1px)}
 
@@ -406,6 +412,7 @@ strong{font-weight:600;color:#fff}
   .nav-links a{font-size:1rem;padding:12px 0;min-height:48px;border-bottom:1px solid var(--line)}
   .nav-links a:last-child{border-bottom:0}
   .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .commit li{flex-basis:calc(33.333% - 18px)}
   .kpi:nth-child(n){border-left:0;border-top:1px solid var(--line)}
   .kpi:nth-child(-n+2){border-top:0}
   .kpi:nth-child(even){border-left:1px solid var(--line)}
@@ -441,10 +448,13 @@ strong{font-weight:600;color:#fff}
 @media (max-width:700px){
   .shot-pair,.careers-grid{grid-template-columns:1fr}
   /* Phones: image on top and pinned while the steps scroll under it. */
-  .tabs-row{grid-template-columns:1fr}
-  .tabs-row .tab-stage{order:-1;aspect-ratio:16/10;z-index:2}
-  .tabs-col{grid-template-columns:1fr}
-  .tabs-col .tab-stage{position:relative;top:auto;aspect-ratio:16/10}
+  .tabs-row,.tabs-col{display:flex;flex-direction:column;gap:12px}
+  .tabs-row .tab-stage,.tabs-col .tab-stage{order:-1;position:sticky;top:calc(var(--head) + 8px);z-index:2;
+    aspect-ratio:16/10;max-height:none;min-height:0;box-shadow:0 -8px 0 var(--navy),0 8px 0 var(--navy)}
+  .band-alt .tab-stage{box-shadow:0 -8px 0 var(--navy-800),0 8px 0 var(--navy-800)}
+  .tabs-col .tab-list{grid-template-rows:none}
+  /* Keep a focused tab clear of the pinned image above it. */
+  .tab{scroll-margin-top:calc(var(--head) + (100vw - 2 * var(--gut)) * .625 + 28px)}
 }
 @media (max-width:520px){
   .site-nav > .btn-sm{display:none}
