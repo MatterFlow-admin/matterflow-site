@@ -507,20 +507,34 @@
     dash.classList.add('is-waiting');
     var counts = dash.querySelectorAll('.count');
     counts.forEach(function(el){ el.textContent = '0'; });
-    new IntersectionObserver(function(entries, obs){
-      if (!entries[0].isIntersecting) return;
-      obs.disconnect();
+    var done = false;
+    function fmt(el, f){
+      var to = parseFloat(el.dataset.to), dec = +el.dataset.dec || 0;
+      el.textContent = (to * f).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    }
+    function finish(animate){
+      if (done) return;
+      done = true;
+      io.disconnect();
+      window.removeEventListener('scroll', onScroll);
       dash.classList.remove('is-waiting');
+      if (!animate) { counts.forEach(function(el){ fmt(el, 1); }); return; }
       var start = performance.now(), dur = 1200;
       (function tick(now){
         var p = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - p, 3);
-        counts.forEach(function(el){
-          var to = parseFloat(el.dataset.to), dec = +el.dataset.dec || 0;
-          el.textContent = (to * e).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
-        });
+        counts.forEach(function(el){ fmt(el, e); });
         if (p < 1) requestAnimationFrame(tick);
       })(start);
-    }, { threshold: 0.35 }).observe(dash);
+    }
+    // The trigger line is the lower 80% of the viewport, so a dashboard taller than the
+    // screen still fires. If the reader jumps past it, show the final figures anyway so
+    // assistive tech never reads the placeholder zeros.
+    function onScroll(){ if (dash.getBoundingClientRect().bottom < 0) finish(false); }
+    var io = new IntersectionObserver(function(entries){
+      if (entries[entries.length - 1].isIntersecting) finish(true);
+    }, { rootMargin: '0px 0px -20% 0px' });
+    io.observe(dash);
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 })();
 </script>

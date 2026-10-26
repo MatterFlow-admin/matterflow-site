@@ -82,7 +82,7 @@ strong{font-weight:600;color:#fff}
   border-bottom:1px solid var(--line);
 }
 /* Lockup per MF-BRD-001: Inter Display Bold, tracking +3.5%, icon = cap height x 1.32. */
-.lockup{display:inline-flex;align-items:center;gap:.6em;text-decoration:none;font-size:1.15rem}
+.lockup{display:inline-flex;align-items:center;gap:.6em;text-decoration:none;font-size:1.15rem;min-height:44px}
 .mark{width:1.32em;height:1.32em;flex:none}
 .wordmark{font-weight:700;letter-spacing:.035em}
 .site-nav{display:flex;align-items:center;gap:clamp(14px,2vw,28px)}
